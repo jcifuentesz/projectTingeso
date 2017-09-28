@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html ng-app="pokemon" ng-controller="MainController">
+<head>
+	<title>{{ title }}</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<script type="text/javascript" src="js/shared/jquery.js"></script>
+	<script type="text/javascript" src="js/shared/bootstrap.js"></script>
+	<script type="text/javascript" src="js/shared/angular.js"></script>
+  <script type="text/javascript" src="js/shared/angular-route.js"></script>
+	<script type="text/javascript" src="js/shared/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<!-- dependencias de angular -->
+	<script type="text/javascript" src="js/app.js"></script>
+	<script type="text/javascript" src="js/controllers/MainController.js"></script>
+  <script type="text/javascript" src="js/utils/filters.js"></script>
+	<style>
+	table {
+	    display: table;
+	    border-collapse: collapse;
+	    border-spacing: 2px;
+	    border-color: gray;
+	}
+</style>
+
+</head>
+<body>
+<div class="panel col-md-12">
+    <div class="col-md-12">
+        <h2>Add Student</h2>
+
+				<table>
+					<tr>
+						<td><h3>Name:</h3></td>
+						<td><input type="text" ng-model="newStudent.name"></td>
+						<td><h3>R.U.T:</h3></td>
+						<td><input type="text" ng-model="newStudent.rut"></td>
+					</tr>
+					<tr>
+						<td><h3>Email:</h3></td>
+						<td><input type="text" ng-model="newStudent.email"></td>
+						<td><h3>Career:</h3></td>
+						<td><input type="text" ng-model="newStudent.career"></td>
+					</tr>
+				</table>
+
+        <div class="row col-md-8">
+        <input ng-click="send()" type="button" value="Agregar">
+        </div>
+    </div>
+</div>
+<div>
+  <div id="student-table">
+    <table class="table table-hover">
+      <thead>
+        <th>Name</th>
+        <th>Rut</th>
+        <th>Email</th>
+        <th>Career</th>
+      </thead>
+      <tr ng-repeat="student in students | startFrom:(currentPage - 1) * pageSize| limitTo:pageSize">
+        <td>{{student.name}}</td>
+        <td>{{student.rut}}</td>
+        <td>{{student.email}}</td>
+        <td>{{student.career}}</td>
+      </tr>
+    </table>
+  </div>
+  <ul uib-pagination total-items="students.length" ng-model="currentPage" ng-change="pageChanged()"></ul>
+</div>
+</body>
+</html>
