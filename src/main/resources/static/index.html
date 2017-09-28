@@ -1,28 +1,50 @@
 <!DOCTYPE html>
-<html ng-app="pokemon" ng-controller="MainController">
+<html ng-app="student" ng-controller="MainController">
 <head>
 	<title>{{ title }}</title>
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<!--<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />-->
+	<link rel="stylesheet" type="text/css" href="css/sb-admin-2.css" />
+
+	<!-- Bootstrap Core CSS -->
+    <link href="css/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="css/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="css/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="css/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="css/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+
 	<script type="text/javascript" src="js/shared/jquery.js"></script>
 	<script type="text/javascript" src="js/shared/bootstrap.js"></script>
 	<script type="text/javascript" src="js/shared/angular.js"></script>
   <script type="text/javascript" src="js/shared/angular-route.js"></script>
 	<script type="text/javascript" src="js/shared/ui-bootstrap-tpls-2.5.0.min.js"></script>
+	<script type="text/javascript" src="js/shared/sb-admin-2.js"></script>
 	<!-- dependencias de angular -->
 	<script type="text/javascript" src="js/app.js"></script>
 	<script type="text/javascript" src="js/controllers/MainController.js"></script>
   <script type="text/javascript" src="js/utils/filters.js"></script>
-	<style>
-	table {
-	    display: table;
-	    border-collapse: collapse;
-	    border-spacing: 2px;
-	    border-color: gray;
-	}
-</style>
+
+	<style type="text/css" >
+		 table td{
+			padding:10px 20px 10px 20px
+		}
+	</style>
 
 </head>
 <body>
+
+<h2>Student App</h2>
 <div class="panel col-md-12">
     <div class="col-md-12">
         <h2>Add Student</h2>
@@ -39,24 +61,23 @@
 						<td><input type="text" ng-model="newStudent.email"></td>
 						<td><h3>Career:</h3></td>
 						<td><input type="text" ng-model="newStudent.career"></td>
+						<td><input ng-click="send()" type="button" value="Add"></td>
 					</tr>
-				</table>
 
-        <div class="row col-md-8">
-        <input ng-click="send()" type="button" value="Agregar">
-        </div>
+				</table>
     </div>
 </div>
 <div>
-  <div id="student-table">
-    <table class="table table-hover">
+  <div class="panel-body" id="student-table">
+		<h2>List Students</h2>
+    <table width="100%" class="table table-striped table-bordered table-hover">
       <thead>
         <th>Name</th>
         <th>Rut</th>
         <th>Email</th>
         <th>Career</th>
       </thead>
-      <tr ng-repeat="student in students | startFrom:(currentPage - 1) * pageSize| limitTo:pageSize">
+      <tr class="odd gradeX" ng-repeat="student in students | startFrom:(currentPage - 1) * pageSize| limitTo:pageSize">
         <td>{{student.name}}</td>
         <td>{{student.rut}}</td>
         <td>{{student.email}}</td>

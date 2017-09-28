@@ -1,4 +1,4 @@
-var app = angular.module('pokemon',['ngRoute', 'ui.bootstrap']);
+var app = angular.module('student',['ngRoute', 'ui.bootstrap']);
 
 app.config(function($routeProvider){
     $routeProvider

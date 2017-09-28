@@ -4,7 +4,6 @@ app.controller('MainController', ['$scope','$http', function($scope,$http) {
     $scope.currentPage = 1;
     $scope.students = [];
     $scope.newStudent = {};
-
     $scope.resetNewStudent = function(){
         $scope.newStudent = {
         "name":"",
