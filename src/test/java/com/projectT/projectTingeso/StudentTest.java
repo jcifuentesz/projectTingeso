@@ -17,24 +17,31 @@ import java.util.*;
 @SpringBootTest
 public class StudentTest {
 	@Autowired
-	StudentController sc;
+	StudentController studentController;
 	
 	@Test
 	public void testLoadStudent ()
 	{
-		List<Student> students = (ArrayList<Student>) sc.findAll();
+		List<Student> students = (ArrayList<Student>) studentController.findAll();
 		assertEquals("Did not get all students", 3, students.size());
+	}
+	
+	@Test
+	public void testFindStudent() throws Exception{
+		List<Student> pepitoList = studentController.findByName("pepito"); 
+		assertEquals("Found wrong number of students", 1, pepitoList.size());
+		assertEquals("Found wrong name", "pepito", pepitoList.get(0).getName());
 	}
 	
 	@Before 
 	public void setUp() throws Exception{
-		sc.deleteAll();
-		Student s1 = new Student(1,"juanito","1111111-1", "juanito@gmail.com","vagancia");
-		sc.save(s1);
-		Student s2 = new Student(2,"juanito","1111111-1", "juanito@gmail.com","vagancia");
-		sc.save(s2);
-		Student s3 = new Student(3,"juanito","1111111-1", "juanito@gmail.com","vagancia");
-		sc.save(s3);
+		studentController.deleteAll();
+		Student s1 = new Student("juanito","1111111-1", "juanito@gmail.com","vagancia");
+		studentController.save(s1);
+		Student s2 = new Student("pepito","2222222-2", "pepito@gmail.com","vagancia");
+		studentController.save(s2);
+		Student s3 = new Student("pedrito","3333333-3", "pedrito@gmail.com","vagancia");
+		studentController.save(s3);
 	}
 	
 }
