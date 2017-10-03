@@ -8,18 +8,18 @@ import javax.persistence.*;
 @Table(name="student")
 public class Student {
 
-    public Student(String name, String rut, String email, String career) {
-		super();
-		this.name = name;
-		this.rut = rut;
-		this.email = email;
-		this.career = career;
-	}
-
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int studentId;
 
+	private String name;
+    
+    private String rut;
+    
+    private String email;
+    
+    private String career;
+    
     public int getStudentId() {
 		return studentId;
 	}
@@ -59,12 +59,18 @@ public class Student {
 	public void setCareer(String career) {
 		this.career = career;
 	}
+	
+	public Student() {
+		super();
+	}
+	
+	public Student(int studentId, String name, String rut, String email, String career) {
+		super();
+		this.studentId = studentId;
+		this.name = name;
+		this.rut = rut;
+		this.email = email;
+		this.career = career;
+	}
 
-	private String name;
-    
-    private String rut;
-    
-    private String email;
-    
-    private String career;
 }

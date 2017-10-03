@@ -29,8 +29,12 @@ public class StudentTest {
 	@Before 
 	public void setUp() throws Exception{
 		sc.deleteAll();
-		Student s1 = new Student("juanito","1111111-1", "juanito@gmail.com","vagancia");
+		Student s1 = new Student(1,"juanito","1111111-1", "juanito@gmail.com","vagancia");
 		sc.save(s1);
+		Student s2 = new Student(2,"juanito","1111111-1", "juanito@gmail.com","vagancia");
+		sc.save(s2);
+		Student s3 = new Student(3,"juanito","1111111-1", "juanito@gmail.com","vagancia");
+		sc.save(s3);
 	}
 	
 }
