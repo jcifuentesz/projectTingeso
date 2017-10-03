@@ -8,15 +8,23 @@ import javax.persistence.*;
 @Table(name="student")
 public class Student {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private long studentId;
+    public Student(String name, String rut, String email, String career) {
+		super();
+		this.name = name;
+		this.rut = rut;
+		this.email = email;
+		this.career = career;
+	}
 
-    public long getStudentId() {
+	@Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int studentId;
+
+    public int getStudentId() {
 		return studentId;
 	}
 
-	public void setStudentId(long studentId) {
+	public void setStudentId(int studentId) {
 		this.studentId = studentId;
 	}
 

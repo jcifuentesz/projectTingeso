@@ -6,5 +6,5 @@ import javax.transaction.Transactional;
 
 
 @Transactional
-public interface StudentController extends CrudRepository<Student, Long> {
+public interface StudentController extends CrudRepository<Student, Integer> {
 }
