@@ -64,9 +64,8 @@ public class Student {
 		super();
 	}
 	
-	public Student(int studentId, String name, String rut, String email, String career) {
+	public Student(String name, String rut, String email, String career) {
 		super();
-		this.studentId = studentId;
 		this.name = name;
 		this.rut = rut;
 		this.email = email;
